@@ -1,0 +1,6 @@
+21:38:51 **** Incremental Build of configuration Debug for project SDL2-RPG ****
+make all 
+make: Nothing to be done for `all'.
+
+21:38:51 Build Finished (took 68ms)
+
