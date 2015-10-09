@@ -1,0 +1,40 @@
+21:29:26 **** Build of configuration Debug for project SDL2-RPG ****
+make all 
+Building file: ../src/Globals.cpp
+Invoking: GCC C++ Compiler
+g++ -I/opt/local/include/SDL2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Globals.d" -MT"src/Globals.d" -o "src/Globals.o" "../src/Globals.cpp"
+Finished building: ../src/Globals.cpp
+ 
+Building file: ../src/Main.cpp
+Invoking: GCC C++ Compiler
+g++ -I/opt/local/include/SDL2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Main.d" -MT"src/Main.d" -o "src/Main.o" "../src/Main.cpp"
+Finished building: ../src/Main.cpp
+ 
+Building file: ../src/Map.cpp
+Invoking: GCC C++ Compiler
+g++ -I/opt/local/include/SDL2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Map.d" -MT"src/Map.d" -o "src/Map.o" "../src/Map.cpp"
+Finished building: ../src/Map.cpp
+ 
+Building file: ../src/Player.cpp
+Invoking: GCC C++ Compiler
+g++ -I/opt/local/include/SDL2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Player.d" -MT"src/Player.d" -o "src/Player.o" "../src/Player.cpp"
+Finished building: ../src/Player.cpp
+ 
+Building file: ../src/Tileset.cpp
+Invoking: GCC C++ Compiler
+g++ -I/opt/local/include/SDL2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tileset.d" -MT"src/Tileset.d" -o "src/Tileset.o" "../src/Tileset.cpp"
+Finished building: ../src/Tileset.cpp
+ 
+Building file: ../src/Wall.cpp
+Invoking: GCC C++ Compiler
+g++ -I/opt/local/include/SDL2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Wall.d" -MT"src/Wall.d" -o "src/Wall.o" "../src/Wall.cpp"
+Finished building: ../src/Wall.cpp
+ 
+Building target: SDL2-RPG
+Invoking: MacOS X C++ Linker
+g++ -L/opt/local/lib/ -o "SDL2-RPG"  ./src/Globals.o ./src/Main.o ./src/Map.o ./src/Player.o ./src/Tileset.o ./src/Wall.o   -lSDL2 -lSDL2_image -lSDL2_ttf
+Finished building target: SDL2-RPG
+ 
+
+21:29:28 Build Finished (took 1s.676ms)
+
