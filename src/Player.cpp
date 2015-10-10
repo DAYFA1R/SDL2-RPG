@@ -68,54 +68,74 @@ void Player::update(float delta, const Uint8* keyState, Map& map) {
 	}
 
 	if (keyState[keys[0]] && keyState[keys[2]]) {
+		int originalY = collider.y;
+		int originalX = collider.x;
+
 		collider.y = roundf(((float) collider.y - (moveSpeed * delta)));
 		if (!map.inCollision(collider)) {
 			positionRect.y = roundf(((float) positionRect.y - (moveSpeed * delta)));
 		}
+		collider.y = originalY;
 
 		collider.x = roundf(((float)collider.x - (moveSpeed * delta)));
 		if (!map.inCollision(collider)) {
 			positionRect.x = roundf(((float)positionRect.x - (moveSpeed * delta)));
 		}
+		collider.x = originalX;
 
 		cropRect.y = frameHeight;
 	}
 	else if (keyState[keys[0]] && keyState[keys[3]]) {
+		int originalY = collider.y;
+		int originalX = collider.x;
+
 		collider.y = roundf(((float)collider.y - (moveSpeed * delta)));
 		if (!map.inCollision(collider)) {
 			positionRect.y = roundf(((float)positionRect.y - (moveSpeed * delta)));
 		}
+		collider.y = originalY;
 
 		collider.x = roundf(((float)collider.x + (moveSpeed * delta)));
 		if (!map.inCollision(collider)) {
 			positionRect.x = roundf(((float)positionRect.x + (moveSpeed * delta)));
 		}
+		collider.x = originalX;
 
 		cropRect.y = frameHeight * 2;
 	}
 	else if (keyState[keys[1]] && keyState[keys[2]]) {
+		int originalY = collider.y;
+		int originalX = collider.x;
+
 		collider.y = roundf(((float)collider.y + (moveSpeed * delta)));
 		if (!map.inCollision(collider)) {
 			positionRect.y = roundf(((float)positionRect.y + (moveSpeed * delta)));
 		}
+		collider.y = originalY;
 
 		collider.x = roundf(((float)collider.x - (moveSpeed * delta)));
 		if (!map.inCollision(collider)) {
 			positionRect.x = roundf(((float)positionRect.x - (moveSpeed * delta)));
 		}
+		collider.x = originalX;
 
 		cropRect.y = frameHeight;
 	}
 	else if (keyState[keys[1]] && keyState[keys[3]]) {
+		int originalY = collider.y;
+		int originalX = collider.x;
+
 		collider.y = roundf(((float)collider.y + (moveSpeed * delta)));
 		if (!map.inCollision(collider)) {
 			positionRect.y = roundf(((float)positionRect.y + (moveSpeed * delta)));
 		}
+		collider.y = originalY;
 
 		collider.x = roundf(((float)collider.x + (moveSpeed * delta)));
 		if (!map.inCollision(collider)) {
 			positionRect.x = roundf(((float)positionRect.x + (moveSpeed * delta)));
 		}
+		collider.x = originalX;
 
 		cropRect.y = frameHeight * 2;
 	}
@@ -196,17 +216,6 @@ void Player::draw(SDL_Renderer* renderTarget, SDL_Rect cameraRect) {
 }
 
 bool Player::intersectsWith(Player& p) {
-	// Bounding box collision
-	/*if (positionRect.x + positionRect.w < p.positionRect.x
-			|| positionRect.x > p.positionRect.x + p.positionRect.w
-			|| positionRect.y + positionRect.h < p.positionRect.y
-			|| positionRect.y > p.positionRect.y + p.positionRect.h) {
-		SDL_SetTextureColorMod(texture, 255, 255, 255);
-		return false;
-	} else {
-		SDL_SetTextureColorMod(texture, 255, 0, 0);
-		return true;
-	} */
 
 	if (sqrt(pow(getOriginX() - p.getOriginX(), 2) + pow(getOriginY() - p.getOriginY(), 2)) >= radius + p.getRadius()) {
 		SDL_SetTextureColorMod(texture, 255, 255, 255);
