@@ -2,7 +2,6 @@
 #include "Player.h"
 #include "Tileset.h"
 #include "Map.h"
-#include "Wall.h"
 
 int main(int argc, char* args[]) {
 	init();
@@ -16,7 +15,7 @@ int main(int argc, char* args[]) {
 	levelHeight = tileset.getTileHeight() * map1.getMapHeight();
 
 	Player player1(gRenderer, "src/assets/img/player1_sheet.png", 5, 5, 3, 4);
-	Wall wall(192, 100, 96, 572);
+	//Wall wall(192, 96, 96, 576);
 
 	// General event handler stuff
 	bool quit = false;
@@ -62,7 +61,7 @@ int main(int argc, char* args[]) {
 		if (!paused) {
 
 			keystate = SDL_GetKeyboardState(NULL);
-			player1.update(delta, keystate);
+			player1.update(delta, keystate, map1);
 
 
 			cameraRect.x = player1.getOriginX() - SCREEN_WIDTH/2;
@@ -89,7 +88,7 @@ int main(int argc, char* args[]) {
 
 			// Make stuff happen!
 			map1.drawTiles(tileset);
-			wall.draw();
+			map1.drawWalls();
 			player1.draw(gRenderer, cameraRect);
 			// Update stage
 			SDL_RenderPresent(gRenderer);

@@ -56,7 +56,7 @@ Player::~Player() {
 	texture = NULL;
 }
 
-void Player::update(float delta, const Uint8* keyState) {
+void Player::update(float delta, const Uint8* keyState, Map& map) {
 	isActive = true;
 
 	if (keyState[keys[4]]) {
@@ -68,39 +68,94 @@ void Player::update(float delta, const Uint8* keyState) {
 	}
 
 	if (keyState[keys[0]] && keyState[keys[2]]) {
-		positionRect.y = roundf(((float) positionRect.y - (moveSpeed * delta)));
-		positionRect.x = roundf(((float)positionRect.x - (moveSpeed * delta)));
+		collider.y = roundf(((float) collider.y - (moveSpeed * delta)));
+		if (!map.inCollision(collider)) {
+			positionRect.y = roundf(((float) positionRect.y - (moveSpeed * delta)));
+		}
+
+		collider.x = roundf(((float)collider.x - (moveSpeed * delta)));
+		if (!map.inCollision(collider)) {
+			positionRect.x = roundf(((float)positionRect.x - (moveSpeed * delta)));
+		}
+
 		cropRect.y = frameHeight;
 	}
 	else if (keyState[keys[0]] && keyState[keys[3]]) {
-		positionRect.y = roundf(((float)positionRect.y - (moveSpeed * delta)));
-		positionRect.x = roundf(((float)positionRect.x + (moveSpeed * delta)));
+		collider.y = roundf(((float)collider.y - (moveSpeed * delta)));
+		if (!map.inCollision(collider)) {
+			positionRect.y = roundf(((float)positionRect.y - (moveSpeed * delta)));
+		}
+
+		collider.x = roundf(((float)collider.x + (moveSpeed * delta)));
+		if (!map.inCollision(collider)) {
+			positionRect.x = roundf(((float)positionRect.x + (moveSpeed * delta)));
+		}
+
 		cropRect.y = frameHeight * 2;
 	}
 	else if (keyState[keys[1]] && keyState[keys[2]]) {
-		positionRect.y = roundf(((float)positionRect.y + (moveSpeed * delta)));
-		positionRect.x = roundf(((float)positionRect.x - (moveSpeed * delta)));
+		collider.y = roundf(((float)collider.y + (moveSpeed * delta)));
+		if (!map.inCollision(collider)) {
+			positionRect.y = roundf(((float)positionRect.y + (moveSpeed * delta)));
+		}
+
+		collider.x = roundf(((float)collider.x - (moveSpeed * delta)));
+		if (!map.inCollision(collider)) {
+			positionRect.x = roundf(((float)positionRect.x - (moveSpeed * delta)));
+		}
+
 		cropRect.y = frameHeight;
 	}
 	else if (keyState[keys[1]] && keyState[keys[3]]) {
-		positionRect.y = roundf(((float)positionRect.y + (moveSpeed * delta)));
-		positionRect.x = roundf(((float)positionRect.x + (moveSpeed * delta)));
+		collider.y = roundf(((float)collider.y + (moveSpeed * delta)));
+		if (!map.inCollision(collider)) {
+			positionRect.y = roundf(((float)positionRect.y + (moveSpeed * delta)));
+		}
+
+		collider.x = roundf(((float)collider.x + (moveSpeed * delta)));
+		if (!map.inCollision(collider)) {
+			positionRect.x = roundf(((float)positionRect.x + (moveSpeed * delta)));
+		}
+
 		cropRect.y = frameHeight * 2;
 	}
 	else if (keyState[keys[0]]) {
-		positionRect.y = roundf(((float)positionRect.y - (moveSpeed * delta)));
+		//project the collision box
+		collider.y = roundf(((float)collider.y - (moveSpeed * delta)));
+
+		//move character only if there is no collision from the projected move
+		if (!map.inCollision(collider)) {
+			positionRect.y = roundf(((float)positionRect.y - (moveSpeed * delta)));
+		}
+
+		//set the sprite for this direction
 		cropRect.y = frameHeight * 3;
 	}
 	else if (keyState[keys[1]]) {
-		positionRect.y = roundf(((float)positionRect.y + (moveSpeed * delta)));
+		collider.y = roundf(((float)collider.y + (moveSpeed * delta)));
+
+		if (!map.inCollision(collider)) {
+			positionRect.y = roundf(((float)positionRect.y + (moveSpeed * delta)));
+		}
+
 		cropRect.y = 0;
 	}
 	else if (keyState[keys[2]]) {
-		positionRect.x = roundf(((float)positionRect.x - (moveSpeed * delta)));
+		collider.x = roundf(((float)collider.x - (moveSpeed * delta)));
+
+		if (!map.inCollision(collider)) {
+			positionRect.x = roundf(((float)positionRect.x - (moveSpeed * delta)));
+		}
+
 		cropRect.y = frameHeight;
 	}
 	else if (keyState[keys[3]]) {
-		positionRect.x = roundf(((float)positionRect.x + (moveSpeed * delta)));
+		collider.x = roundf(((float)collider.x + (moveSpeed * delta)));
+
+		if (!map.inCollision(collider)) {
+			positionRect.x = roundf(((float)positionRect.x + (moveSpeed * delta)));
+		}
+
 		cropRect.y = frameHeight * 2;
 	} else {
 		isActive = false;

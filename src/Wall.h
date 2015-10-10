@@ -1,17 +1,20 @@
 #pragma once
 
 #include "Globals.h"
-#include "Player.h"
 
 class Wall {
 private:
-	SDL_Rect wall;
 	int originalX;
 	int originalY;
 	int originalW;
 	int originalH;
+
 public:
-	Wall(int x, int y, int w, int h);
+	SDL_Rect wall;
+
+public:
+	Wall();
 	virtual ~Wall();
 	void draw();
+	void setWallProperties(int x, int y, int w, int h);
 };

@@ -2,6 +2,7 @@
 
 #include "Globals.h"
 #include "Tileset.h"
+#include "Wall.h"
 #include <iomanip>
 
 class Map {
@@ -10,6 +11,8 @@ private:
 	int mMapHeight;
 	int mTotalTiles;
 	Uint16* mMapData;
+	Wall* mWallData;
+	int mTotalWalls;
 public:
 	Map(string path);
 	virtual ~Map();
@@ -17,5 +20,8 @@ public:
 	int getMapHeight();
 	int getTotalTiles();
 	Uint16* getMapData();
+	Wall* getWalls();
 	void drawTiles(Tileset& tileset);
+	void drawWalls();
+	bool inCollision(SDL_Rect playerRect);
 };

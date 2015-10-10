@@ -3,7 +3,7 @@
 /* @group vars */
 
 //general
-const bool DEBUG = false;
+const bool DEBUG = true;
 const int SCREEN_WIDTH = 1200;
 const int SCREEN_HEIGHT = 900;
 const Uint8* keystate;

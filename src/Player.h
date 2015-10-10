@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Globals.h"
+#include "Map.h"
 
 class Player {
 private:
@@ -24,7 +25,7 @@ public:
 	Player(SDL_Renderer* renderTarget, string path, int x, int y, int framesX, int framesY);
 	virtual ~Player();
 
-	void update(float delta, const Uint8 *keyState);
+	void update(float delta, const Uint8 *keyState, Map& map);
 	void draw(SDL_Renderer* renderTarget, SDL_Rect cameraRect);
 	bool intersectsWith(Player& p);
 	int getOriginX();

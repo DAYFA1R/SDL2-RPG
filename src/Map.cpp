@@ -8,7 +8,7 @@
 #include "Map.h"
 
 Map::Map(string path) :
-		mMapWidth(0), mMapHeight(0), mTotalTiles(0), mMapData(0) {
+		mMapWidth(0), mMapHeight(0), mTotalTiles(0), mMapData(0), mTotalWalls(0) {
 
 	// get map size from header.map
 	ifstream mapHeader("src/assets/maps/" + path + "/header.map");
@@ -17,6 +17,7 @@ Map::Map(string path) :
 
 	mapHeader.close();
 
+	// TILE MAPPING
 	// get total tiles for max tile index
 	mTotalTiles = mMapWidth * mMapHeight;
 
@@ -31,11 +32,35 @@ Map::Map(string path) :
 
 	mapFile.close();
 
+	// WALL MAPPING
+	// get total amount of walls
+	ifstream wallFile("src/assets/maps/" + path + "/walls.map");
+
+	wallFile >> mTotalWalls;
+
+	// allocate walls
+	mWallData = new Wall[mTotalWalls];
+
+	for (int i = 0; i < mTotalWalls; i++) {
+		int pullX, pullY, pullW, pullH;
+
+		wallFile >> pullX;
+		wallFile >> pullY;
+		wallFile >> pullW;
+		wallFile >> pullH;
+
+		mWallData[i].setWallProperties(pullX, pullY, pullW, pullH);
+	}
+
+	wallFile.close();
+
 }
 
 Map::~Map() {
 	delete[] mMapData;
+	delete[] mWallData;
 	mMapData = NULL;
+	mWallData = NULL;
 }
 
 int Map::getMapWidth() {
@@ -83,4 +108,23 @@ void Map::drawTiles(Tileset& tileset) {
 
 		xCounter++;
 	}
+}
+
+void Map::drawWalls() {
+	for (int i = 0; i < mTotalWalls; i++) {
+		mWallData[i].draw();
+	}
+}
+
+bool Map::inCollision(SDL_Rect playerRect) {
+
+	bool isColliding = false;
+
+	for (int i = 0; i < mTotalWalls; i++) {
+		if (checkCollision(playerRect, mWallData[i].wall)) {
+			isColliding = true;
+		}
+	}
+
+	return isColliding;
 }

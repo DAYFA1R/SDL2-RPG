@@ -7,17 +7,12 @@
 
 #include "Wall.h"
 
-Wall::Wall(int x, int y, int w, int h) {
+Wall::Wall(): originalX(0), originalY(0), originalW(0), originalH(0) {
 	//debug = false;
 
 	if (DEBUG == true) {
 		SDL_SetRenderDrawColor(gRenderer, 255, 0, 0, 255);
 	}
-
-	originalX = x;
-	originalY = y;
-	originalW = w;
-	originalH = h;
 
 	wall.x = originalX;
 	wall.y = originalY;
@@ -38,6 +33,16 @@ void Wall::draw() {
 	if (checkCollision(cameraRect, wall)) {
 		wall.x -= cameraRect.x;
 		wall.y -= cameraRect.y;
-		SDL_RenderFillRect(gRenderer, &wall);
+
+		if (DEBUG == true) {
+			SDL_RenderFillRect(gRenderer, &wall);
+		}
 	}
+}
+
+void Wall::setWallProperties(int x, int y, int w, int h) {
+	originalX = x;
+	originalY = y;
+	originalW = w;
+	originalH = h;
 }
