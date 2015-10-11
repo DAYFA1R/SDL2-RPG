@@ -35,9 +35,9 @@ tiles.map
 
 I'm going to use the value `F` to demonstrate what each byte represents.
 
-`0x000F` is the base value for the tile's X co-ordinate.
-`0x00F0` is the modifier for the base value of X.
-`0x0F00` is the base value for the tile's Y co-ordinate.
+`0x000F` is the base value for the tile's X co-ordinate.<br />
+`0x00F0` is the modifier for the base value of X.<br />
+`0x0F00` is the base value for the tile's Y co-ordinate.<br />
 `0xF0F0` is the modifier for the base value of Y.
 
 The first two bytes are multiplied together in order to give you a tile's X co-ordinate, and the last two are for the Y co-ordinate. You could think of each value as `0xYYXX`.
