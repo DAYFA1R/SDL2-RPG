@@ -42,6 +42,6 @@ I'm going to use the value `F` to demonstrate what each byte represents.
 
 The first two bytes are multiplied together in order to give you a tile's X co-ordinate, and the last two are for the Y co-ordinate. You could think of each value as `0xYYXX`.
 
-The reason I implemented this was because it gave a good visualization of what each tile was, and gives a maximum range of 226 values (15*15 + 1 for zero) in each axis, allowing for a maximum tileset consisting of 51 076 unique tiles.
+The reason I implemented this was because it gave a good visualization of what each tile was, and gives a maximum range of 226 values in each axis, allowing for a maximum tileset consisting of 51 076 unique tiles.
 
 To draw your level, simply call `yourMapInstance.draw(yourTilesetInstance)` from inside your game loop :)
