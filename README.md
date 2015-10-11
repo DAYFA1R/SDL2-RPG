@@ -23,6 +23,8 @@ tiles.map
 ```
 `header.map` declares the map's total width and height, and should only contain two integers in decimal. The first being the number of tiles wide the level will be, and the second being the number of tiles high.
 
+**Example:** `4 3`
+
 `tiles.map` actually contains the visual representation of your tiles, using a `Uint16` in hexadecimal to indicate the specific tile you want to use.
 
 **Example:**
