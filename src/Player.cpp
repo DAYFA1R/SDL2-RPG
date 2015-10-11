@@ -186,7 +186,7 @@ void Player::move(int direction, Map& map) {
 		wallInCollision = map.inCollision(collider);
 
 		//move character only if there is no collision from the projected move
-		if (!wallInCollision) {
+		if (wallInCollision == -1) {
 			positionRect.y = roundf(((float)positionRect.y - (moveSpeed * delta)));
 		} else {
 			// position character at the edge of the wall
@@ -202,7 +202,7 @@ void Player::move(int direction, Map& map) {
 	case 1:
 		collider.y = roundf(((float)collider.y + (moveSpeed * delta)));
 		wallInCollision = map.inCollision(collider);
-		if (!wallInCollision) {
+		if (wallInCollision == -1) {
 			positionRect.y = roundf(((float)positionRect.y + (moveSpeed * delta)));
 		} else {
 			SDL_Rect wall = map.getWall(wallInCollision).wall;
@@ -213,7 +213,7 @@ void Player::move(int direction, Map& map) {
 	case 2:
 		collider.x = roundf(((float)collider.x - (moveSpeed * delta)));
 		wallInCollision = map.inCollision(collider);
-		if (!wallInCollision) {
+		if (wallInCollision == -1) {
 			positionRect.x = roundf(((float)positionRect.x - (moveSpeed * delta)));
 		} else {
 			SDL_Rect wall = map.getWall(wallInCollision).wall;
@@ -224,7 +224,7 @@ void Player::move(int direction, Map& map) {
 	case 3:
 		collider.x = roundf(((float)collider.x + (moveSpeed * delta)));
 		wallInCollision = map.inCollision(collider);
-		if (!wallInCollision) {
+		if (wallInCollision == -1) {
 			positionRect.x = roundf(((float)positionRect.x + (moveSpeed * delta)));
 		} else {
 			SDL_Rect wall = map.getWall(wallInCollision).wall;

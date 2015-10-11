@@ -117,11 +117,12 @@ void Map::drawWalls() {
 }
 
 int Map::inCollision(SDL_Rect playerRect) {
-	int idOfWall = NULL;
+	int idOfWall = -1;
 
 	for (int i = 0; i < mTotalWalls; i++) {
 		if (checkCollision(playerRect, mWallData[i].wall)) {
 			idOfWall = i;
+			//printf("Colliding with wall %d\n", idOfWall); //for testing wall IDs
 		}
 	}
 
