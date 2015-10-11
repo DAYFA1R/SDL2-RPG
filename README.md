@@ -31,6 +31,7 @@ tiles.map
 0x0000 0x2DAC 0x14FF 0x0000
 0x0000 0x0000 0x2DAC 0x0000
 ````
+**A note on formatting:** The intention of this `tiles.map` file is to visuallize your map numerically. The way I have formatted my tiles is by mimicking a table, with each column of tiles on the same line, and each row of tiles represented on a new line. This isn't necessary, but it will probably save you a crapton of time when you're mapping out your tiles :P
 
 I'm going to use the value `F` to demonstrate what each byte represents.
 
