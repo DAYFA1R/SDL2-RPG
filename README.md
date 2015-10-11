@@ -43,4 +43,4 @@ The first two bytes are multiplied together in order to give you a tile's X co-o
 
 The reason I implemented this was because it gave a good visualization of what each tile was, and gives a maximum range of 226 values (15*15 + 1 for zero) in each axis, allowing for a maximum tileset consisting of 51 076 unique tiles.
 
-To draw your level, simply call `yourMapInstance.draw(yourTilesetInstance)` :)
+To draw your level, simply call `yourMapInstance.draw(yourTilesetInstance)` from inside your game loop :)
