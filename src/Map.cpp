@@ -116,15 +116,21 @@ void Map::drawWalls() {
 	}
 }
 
-bool Map::inCollision(SDL_Rect playerRect) {
+int Map::inCollision(SDL_Rect playerRect) {
 
 	bool isColliding = false;
+	int idOfWall = NULL;
 
 	for (int i = 0; i < mTotalWalls; i++) {
 		if (checkCollision(playerRect, mWallData[i].wall)) {
 			isColliding = true;
+			idOfWall = i;
 		}
 	}
 
-	return isColliding;
+	return idOfWall;
+}
+
+Wall Map::getWall(int id) {
+	return mWallData[id];
 }

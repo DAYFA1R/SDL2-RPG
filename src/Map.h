@@ -20,8 +20,8 @@ public:
 	int getMapHeight();
 	int getTotalTiles();
 	Uint16* getMapData();
-	Wall* getWalls();
+	Wall getWall(int id);
 	void drawTiles(Tileset& tileset);
 	void drawWalls();
-	bool inCollision(SDL_Rect playerRect);
+	int inCollision(SDL_Rect playerRect);
 };

@@ -31,4 +31,5 @@ public:
 	int getOriginX();
 	int getOriginY();
 	int getRadius();
+	void move(int direction, Map& map);
 };
